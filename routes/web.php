@@ -18,4 +18,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('menu', 'MenuController@index')->name('menu');
     Route::get('menu/create', 'MenuController@create')->name('menu_create');
     Route::post('menu', 'MenuController@store')->name('menu_store');
+    Route::post('menu/guardar-orden', 'MenuController@guardarOrden')->name('guardar_orden');
 });

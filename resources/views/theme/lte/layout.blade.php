@@ -17,6 +17,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/skins/_all-skins.min.css")}}">
+  @yield('styles')
   <link rel="stylesheet" href="{{asset("assets/css/custom.css")}}">
   
   @yield('styles')
