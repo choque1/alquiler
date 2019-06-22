@@ -16,7 +16,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'estado', 'aescrypt', 
+
     ];
 
     /**
@@ -34,6 +35,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'hash',
     ];
+
+    public function roles() {
+        return $this->belongsToMany(\jeremykenedy\LaravelRoles\Models\Role::class, 'role_user')->withPivot('id');
+    }
 }
