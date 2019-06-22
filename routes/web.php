@@ -25,4 +25,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('usuario/create', 'UsuarioController@create')->name('usuario_create');
     Route::post('usuario', 'UsuarioController@store')->name('usuario_store');
     Route::get('usuario/{id}', 'UsuarioController@destroy')->name('usuario_delete');
+    //departamento
+    Route::get('departamento', 'DepartamentoController@index')->name('departamento');
+    Route::get('departamento/create', 'DepartamentoController@create')->name('departamento_create');
+    Route::post('departamento', 'DepartamentoController@store')->name('departamento_store');
+    Route::get('departamento/{id}', 'DepartamentoController@destroy')->name('departamento_delete');
+    Route::get('departamento/{id}/edit', 'DepartamentoController@edit')->name('departamento_edit');
+    Route::put('departamento/{id}', 'DepartamentoController@update')->name('departamento_update');
 });
