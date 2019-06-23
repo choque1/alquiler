@@ -10,15 +10,29 @@
           <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">Departamentos</h3>
-              <div class="box-tools pull-right">
-                    <a href="{{route('departamento_create')}}" class="btn btn-block btn-success btn-sm">
-                        <i class="fa fa-fw fa-plus-circle"></i> Nuevo registro
-                    </a>
-                </div>
+              
             </div>         
                         
                    
             <div class="box-body table-responsive no-padding">
+                    <div class="box-body table-responsive no-padding">
+                            <div class="box-tools pull-right">
+                                    <a href="{{route('departamento_create')}}" class="btn btn-block btn-success btn-sm">
+                                        <i class="fa fa-fw fa-plus-circle"></i> Nuevo registro
+                                    </a>
+                            </div>
+                        <form action="{{route('departamento')}}" method="GET" >
+                                <div class="box-tools">
+                                        <div class="input-group input-group-sm" style="width: 300px;">
+                                          <input type="text" name="estado" class="form-control " placeholder="Search" aria-describedby="search"
+                                        >
+                        
+                                          <div class="input-group-btn">
+                                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                          </div>
+                                        </div>
+                                      </div>
+                        </form>
                 <table class="table table-bordered table-hover table-striped" id="tabla-data" >
                     <thead>
                         <tr>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Cuarto;
+use App\Http\Requests\ValidacionCuarto;
 
 class CuartoController extends Controller
 {
@@ -35,10 +36,18 @@ class CuartoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {   
+    public function store(ValidacionCuarto $request)
+    {
+       /* $validatedData = $request->validate([
+            'direccion' => 'required|max:50',
+            'estado' => 'required|max:50',
+            'telefono' => 'requeride|numeric|max:15|min:8',
+            'descripcion' => 'requeride|max:300',
+            'foto'=> 'mimes:jpeg,bmp,png,jpg'   
+
+        ]);  */  
         $cuarto=new Cuarto();
-       $files = $request->file('foto');
+        $files = $request->file('foto');
     	foreach($files as $file){
             $name = time().$file->getClientOriginalName();
             $file->move(public_path().'/imagenes/cuartos/',$name);
@@ -54,7 +63,12 @@ class CuartoController extends Controller
     	$cuarto->save();
     	return redirect('admin/cuarto')->with('mensaje', 'Cuarto creado con exito');;
         
-      
+      /*  if(Input::hasFile('foto')){
+    		$file=Input::file('foto');
+    		$file->move(public_path().'/imagenes/departamentos/',$file->getClientOriginalName());
+    		$request->foto=$file->getClientOriginalName();
+        }
+        return redirect('admin/usuario')->with('mensaje', 'Usuario creado con exito');*/
     }
 
     /**
@@ -87,7 +101,7 @@ class CuartoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Responses
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionCuarto $request, $id)
 
     {
         $cuarto = Cuarto::find($id);
@@ -111,10 +125,18 @@ class CuartoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        $departamento = Departamento::destroy($id);
+        if ($request->ajax()) {
+            if (Cuarto::destroy($id)) {
+                return response()->json(['mensaje' => 'ok']);
+            } else {
+                return response()->json(['mensaje' => 'ng']);
+            }
+        } else {
+            abort(404);
+        }
       
-        return redirect('admin/Cuarto')->with('mensaje', 'Cuarto eliminado con exito');
+        //return redirect('admin/departamento')->with('mensaje', 'Departamento eliminado con exito');
     }
 }

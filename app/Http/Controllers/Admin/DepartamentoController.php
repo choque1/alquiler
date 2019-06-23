@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ValidacionDepartamento;
 use App\Models\Admin\Departamento;
-use Validator;
+
 
 class DepartamentoController extends Controller
 {
@@ -14,9 +14,10 @@ class DepartamentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $departamentos = Departamento::orderBy('id')->paginate(2);
+       
+        $departamentos = Departamento::estado($request->estado)->orderBy('id')->paginate(2);
         return view('admin.departamento.index', compact('departamentos'));
     }
 
