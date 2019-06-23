@@ -1,6 +1,6 @@
 @extends("theme.$theme.layout")
 @section("scripts")
-<script src="{{asset("assets/pages/scripts/admin/menu/crear.js")}}" type="text/javascript"> </script>
+<script src="{{asset("assets/pages/scripts/admin/crear.js")}}" type="text/javascript"> </script>
 @endsection
 @section('contenido')
     <div class="row">
@@ -14,6 +14,7 @@
           <form action="{{route('departamento_store')}}" id="form-general" 
           
           class="form-horizontal" method="POST" autocomplete="off" enctype="multipart/form-data" >
+          
             @csrf
                 <div class="box-body ">
                     @include('admin.departamento.form')

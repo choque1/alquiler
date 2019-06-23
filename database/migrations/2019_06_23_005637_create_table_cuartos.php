@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableDepartamentos extends Migration
+class CreateTableCuartos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTableDepartamentos extends Migration
      */
     public function up()
     {
-        Schema::create('departamentos', function (Blueprint $table) {
+        Schema::create('cuartos', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('direccion', 50);
             $table->string('estado',50);
@@ -22,7 +22,8 @@ class CreateTableDepartamentos extends Migration
             $table->String('foto', 200);
             $table->timestamps();
             $table->charset = 'utf8mb4';
-            $table->collation = 'utf8mb4_spanish_ci';            
+            $table->collation = 'utf8mb4_spanish_ci';  
+            
         });
     }
 
@@ -33,6 +34,6 @@ class CreateTableDepartamentos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departamentos');
+        Schema::dropIfExists('cuartos');
     }
 }

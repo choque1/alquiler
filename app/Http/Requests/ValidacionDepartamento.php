@@ -13,7 +13,7 @@ class ValidacionDepartamento extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,10 +24,11 @@ class ValidacionDepartamento extends FormRequest
     public function rules()
     {
         return [
-            'direccion' => 'required|max:50|unique',
+            'direccion' => 'required|max:50',
             'estado' => 'required|max:50',
-            'telefono' => 'requeride|numeric|max:15',
-            'descripcion' => 'requeride|max:300',            
+            'telefono' => 'min:8|max:15|required',
+            'descripcion' => 'required|max:300',
+            'foto'=> 'max:200' ,             
         ];
     }
 }

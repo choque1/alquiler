@@ -21,7 +21,7 @@ class CreateTableUsuario extends Migration
 
             $table->string('aescrypt');
             $table->enum('estado', ['enable', 'disable', 'delete'])->default('enable');
-            $table->remenberToken();
+            //$table->remenberToken();
             $table->timestamps();
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_spanish_ci';

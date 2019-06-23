@@ -25,6 +25,6 @@
 <div class="form-group">
     <label for="foto" class="col-lg-3 control-label " >Foto</label>
       <div class="col-lg-8">
-           <input type="file" name="foto" class="form-control" id="foto" value ="{{old('foto', $data->foto ?? '' )}}">
+           <input type="file" name="foto[]" multiple class="form-control" id="foto" value ="{{old('foto', $data->foto ?? '' )}}">
       </div>
 </div>

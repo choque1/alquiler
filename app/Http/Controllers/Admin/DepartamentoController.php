@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidacionDepartamento;
 use App\Models\Admin\Departamento;
-use Illuminate\Support\Facades\Input;
+use Validator;
 
 class DepartamentoController extends Controller
 {
@@ -15,7 +16,7 @@ class DepartamentoController extends Controller
      */
     public function index()
     {
-        $departamentos = Departamento::orderBy('id')->get();
+        $departamentos = Departamento::orderBy('id')->paginate(2);
         return view('admin.departamento.index', compact('departamentos'));
     }
 
@@ -35,23 +36,32 @@ class DepartamentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {   
-       
-    	if($request->hasFile('foto')){
-            $file=$request->file('foto');
+    public function store(ValidacionDepartamento $request)
+    {
+       /* $validatedData = $request->validate([
+            'direccion' => 'required|max:50',
+            'estado' => 'required|max:50',
+            'telefono' => 'requeride|numeric|max:15|min:8',
+            'descripcion' => 'requeride|max:300',
+            'foto'=> 'mimes:jpeg,bmp,png,jpg'   
+
+        ]);  */  
+        $departamento=new Departamento();
+        $files = $request->file('foto');
+    	foreach($files as $file){
             $name = time().$file->getClientOriginalName();
-    		$file->move(public_path().'/imagenes/departamentos/',$name);
+            $file->move(public_path().'/imagenes/departamentos/',$name);
+            $departamento->foto= $name;
     		
         }
-        $departamento=new Departamento();
+        
     	$departamento->direccion=$request->input('direccion');
     	$departamento->estado=$request->input('estado');
     	$departamento->telefono=$request->input('telefono');
     	$departamento->descripcion=$request->input('descripcion');
-    	$departamento->foto= $name;
+    	
     	$departamento->save();
-    	return redirect('admin/departmento')->with('mensaje', 'Departamento creado con exito');;
+    	return redirect('admin/departamento')->with('mensaje', 'Departamento creado con exito');;
         
       /*  if(Input::hasFile('foto')){
     		$file=Input::file('foto');
@@ -91,7 +101,7 @@ class DepartamentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Responses
      */
-    public function update(Request $request, $id)
+    public function update(ValidacionDepartamento $request, $id)
 
     {
         $departamento = Departamento::find($id);
@@ -115,10 +125,18 @@ class DepartamentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        $departamento = Departamento::destroy($id);
+        if ($request->ajax()) {
+            if (Departamento::destroy($id)) {
+                return response()->json(['mensaje' => 'ok']);
+            } else {
+                return response()->json(['mensaje' => 'ng']);
+            }
+        } else {
+            abort(404);
+        }
       
-        return redirect('admin/departamento')->with('mensaje', 'Departamento eliminado con exito');
+        //return redirect('admin/departamento')->with('mensaje', 'Departamento eliminado con exito');
     }
 }
