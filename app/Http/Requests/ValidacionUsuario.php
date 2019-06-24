@@ -24,7 +24,7 @@ class ValidacionUsuario extends FormRequest
     public function rules()
     {
         return [
-            'usuario' => 'required|max:50|unique|email',
+            'usuario' => 'required|max:50',
             'password' => 'required|password|max:50',
             'nombre' => 'requeride|max:50',
             

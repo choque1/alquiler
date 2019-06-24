@@ -39,11 +39,10 @@
                             <th>ID</th>
                             <th>DIRECCION</th>
                             <th>ESTADO</th>
-                            <th>TIPO</th>
-                            <th>CONDICION</th>
+                            <th>TELEFONO</th>
                             <th>DESCRIPCION</th>
                             <th>FOTO</th>
-                            <th>ACCION</th>
+                            <th></th>
                         </tr> 
                     </thead>
                     <tbody> 
@@ -52,18 +51,7 @@
                             <td>{{$departamento->id}}</td>
                             <td>{{$departamento->direccion}}</td>
                             <td>{{$departamento->estado}}</td>
-                           @foreach ($tipos as $tipo)
-                              @if ($departamento->tipo_id==$tipo->id)
-                                <td >{{$tipo->nombre}}</td>  
-                              @endif
-                           
-                           @endforeach
-                           @foreach ($condicion as $cond)
-                              @if ($departamento->condicion_id==$cond->id)
-                                <td >{{$cond->nombre}}</td>  
-                              @endif
-                           
-                           @endforeach                    
+                            <td>{{$departamento->telefono}}</td>
                             <td>{{$departamento->descripcion}}</td>
                             <td><img src="{{asset('imagenes/departamentos/'.$departamento->foto)}}" alt="" height="100px" width="100px" class="img-thumbnail"></td> 
                             <td>

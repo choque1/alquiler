@@ -5,7 +5,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ValidacionDepartamento;
 use App\Models\Admin\Departamento;
-
+use App\Models\Admin\Tipo;
+use App\Models\Admin\Condicion;
+use Illuminate\Support\Facades\DB;
 
 class DepartamentoController extends Controller
 {
@@ -16,9 +18,12 @@ class DepartamentoController extends Controller
      */
     public function index(Request $request)
     {
-       
+        
+        
+        $tipos = Tipo::all();
+        $condicion = Condicion::all();
         $departamentos = Departamento::estado($request->estado)->orderBy('id')->paginate(2);
-        return view('admin.departamento.index', compact('departamentos'));
+        return view('admin.departamento.index', compact('departamentos','tipos', 'condicion'));
     }
 
     /**
@@ -28,7 +33,13 @@ class DepartamentoController extends Controller
      */
     public function create()
     {
-        return view('admin.departamento.create');
+
+            $condicion= Condicion::all();
+            
+            $tipos = Tipo::all();
+           
+       
+        return view('admin.departamento.create',compact('tipos','condicion'));
     }
 
     /**
@@ -39,15 +50,9 @@ class DepartamentoController extends Controller
      */
     public function store(ValidacionDepartamento $request)
     {
-       /* $validatedData = $request->validate([
-            'direccion' => 'required|max:50',
-            'estado' => 'required|max:50',
-            'telefono' => 'requeride|numeric|max:15|min:8',
-            'descripcion' => 'requeride|max:300',
-            'foto'=> 'mimes:jpeg,bmp,png,jpg'   
-
-        ]);  */  
+              
         $departamento=new Departamento();
+
         $files = $request->file('foto');
     	foreach($files as $file){
             $name = time().$file->getClientOriginalName();
@@ -55,21 +60,15 @@ class DepartamentoController extends Controller
             $departamento->foto= $name;
     		
         }
-        
+        $departamento->preciopormes=$request->input('preciopormes');
     	$departamento->direccion=$request->input('direccion');
-    	$departamento->estado=$request->input('estado');
-    	$departamento->telefono=$request->input('telefono');
+    	$departamento->tipo_id=$request->input('tipo_id');
+    	$departamento->condicion_id=$request->input('condicion_id');
     	$departamento->descripcion=$request->input('descripcion');
     	
     	$departamento->save();
     	return redirect('admin/departamento')->with('mensaje', 'Departamento creado con exito');;
-        
-      /*  if(Input::hasFile('foto')){
-    		$file=Input::file('foto');
-    		$file->move(public_path().'/imagenes/departamentos/',$file->getClientOriginalName());
-    		$request->foto=$file->getClientOriginalName();
-        }
-        return redirect('admin/usuario')->with('mensaje', 'Usuario creado con exito');*/
+      
     }
 
     /**
@@ -91,8 +90,12 @@ class DepartamentoController extends Controller
      */
     public function edit($id)
     {
+        $condicion= Condicion::all();
+            
+         $tipos = Tipo::all();
+           
         $data = Departamento::findOrFail($id);
-        return view('admin.departamento.edit', compact('data'));
+        return view('admin.departamento.edit', compact('data','condicion','tipos'));
     }
 
     /**
@@ -130,6 +133,7 @@ class DepartamentoController extends Controller
     {
         if ($request->ajax()) {
             if (Departamento::destroy($id)) {
+                $request->estado= 'false';
                 return response()->json(['mensaje' => 'ok']);
             } else {
                 return response()->json(['mensaje' => 'ng']);

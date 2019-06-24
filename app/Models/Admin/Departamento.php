@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Departamento extends Model
 {
     protected $table = "departamentos";
-    protected $fillable = ['direccion','estado','telefono','descripcion','foto'];
+    protected $fillable = ['preciopormes','direccion','tipo_id','condicion_id','descripcion','foto'];
 
     public function scopeEstado($query,$estado){
         if($estado)
