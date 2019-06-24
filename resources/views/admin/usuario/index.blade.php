@@ -11,10 +11,12 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>USUARIO</th>
-                            <th>PASSWORD</th>
                             <th>NOMBRE</th>
-                            <th>FOTO</th>
+                            <th>CI</th>
+                            <th>EMAIL</th>
+                            <th>ESTADO</th>
+                            <th>FECHADENACIMIENTO</th>
+                            <th>TELEFONO</th>
                             <th></th>
                         </tr> 
                     </thead>
@@ -22,10 +24,12 @@
                         @foreach ($usuarios as $usuario)
                         <tr>
                             <td>{{$usuario->id}}</td>
-                            <td>{{$usuario->usuario}}</td>
-                            <td>{{$usuario->password}}</td>
                             <td>{{$usuario->nombre}}</td>
-                            <td>{{$usuario->foto}}</td>
+                            <td>{{$usuario->ci}}</td>
+                            <td>{{$usuario->email}}</td>
+                            <td>{{$usuario->estado}}</td>
+                            <td>{{$usuario->fechadenacimiento}}</td>
+                            <td>{{$usuario->telefono}}</td>
                             <td><a href="" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>
                                 <a href="{{route('usuario_delete', $usuario->id)}}" class="btn btn-danger" onclick="return confirm ('seguro que deseas eliminarlo')"><span class="glyphicon 
                                     glyphicon-remove-circle" aria-hidden="true"></span></a>

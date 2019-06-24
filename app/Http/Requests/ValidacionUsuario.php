@@ -24,9 +24,12 @@ class ValidacionUsuario extends FormRequest
     public function rules()
     {
         return [
-            'usuario' => 'required|max:50|unique|email',
-            'password' => 'required|password|max:50',
-            'nombre' => 'requeride|max:50',
+            'nombre' => 'required|max:20',
+            'ci' => 'required|max:15',
+            'email' => 'required|max:30',
+            'estado' => 'required|max:50',
+            'fechadenacimiento' => 'required|max:20',
+            'telefono'=>'min:8|max:15|required',
             
         ];
     }

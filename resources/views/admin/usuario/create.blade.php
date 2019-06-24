@@ -9,7 +9,7 @@
           @include('includes.mensaje')
           <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">Crear menus</h3>
+              <h3 class="box-title">Crear Usuario</h3>
             </div>
           <form action="{{route('usuario_store')}}" id="form-general" class="form-horizontal" method="POST" autocomplete="off">
             @csrf

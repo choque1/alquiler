@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Usuario extends Model
 {
+    protected $table = 'usuario';
     protected $fillable = [
-    'name', 'email', 'password', 'estado', 'aescrypt', 
+    'nombre', 'ci', 'email', 'estado', 'fechadenacimiento', 'password', 'idTipoUsuario', 
 
     ];
-
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -28,8 +28,14 @@ class Usuario extends Model
     protected $casts = [
         'hash',
     ];
+    public function tipoUsuario() {
+        return $this->belongsTo('Alquiler\Tipo_Usuario', 'idTipoUsuario');
+    }
 
-    public function roles() {
-        return $this->belongsToMany(\jeremykenedy\LaravelRoles\Models\Role::class, 'role_usuario')->withPivot('id');
+    public function scopeOfType($query, $id){
+        if (trim($id)!="")
+        {
+            $query->where('id', $id);
+        }
     }
 }

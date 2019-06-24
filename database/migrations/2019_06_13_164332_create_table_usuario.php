@@ -15,9 +15,15 @@ class CreateTableUsuario extends Migration
     {
         Schema::create('usuario', function (Blueprint $table) {
             $table->Increments('id');
-            $table->string('usuario', 50);
-            $table->string('password', 100);
             $table->string('nombre', 50);
+            $table->string('ci',15)->unique();
+            $table->string('email',25);
+            $table->boolean('estado')->default(true);
+            $table->date('fechadenacimiento');
+            $table->string('telefono');
+            $table->integer('idTipoUsuario')->unsigned();
+            $table->foreign('idTipoUsuario')->references('id')->on('tipo_usuarios');
+            
             $table->timestamps();
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_spanish_ci';
