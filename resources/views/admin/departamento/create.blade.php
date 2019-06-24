@@ -17,7 +17,7 @@
           
             @csrf
                 <div class="box-body ">
-                    @include('admin.departamento.form')
+                    @include('admin.departamento.form-crear')
                 </div>
                 <div class="box-footer">
                   <div class="col-lg-3"></div>

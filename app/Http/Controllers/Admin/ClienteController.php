@@ -7,13 +7,12 @@ use App\Illuminate\Admin\Cliente;
 
 class ClienteController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $data = $this->usuario->all($request);
 
-        return view('app::admin.cliente.index', [
-            'clientes'   =>  $data
-        ]);
+        $clientes = Cuarto::orderBy('id')->paginate(10);
+        return view('admin.cliente.index', compact('clientes'));
+        
     }
 
     /**
@@ -23,9 +22,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view('app:admin:.cliente.create', [
-            'roles' =>  $this->clientes->roles()
-        ]);
+        return view('admin:.cliente.create');
     }
 
     /**
@@ -36,12 +33,8 @@ class ClienteController extends Controller
      */
     public function store(\App\Http\Requests\Admin\ClienteStoreRequest $request)
     {
-        if( $this->clientes->store($request))
-            $request->session()->flash('success', 'CLIENTE REGISTRADO EXITOSAMENTE');
-        else
-            $request->session()->flash('info', 'EL CLIENTE YA SE ENCUENTRA REGISTRADO EN EL SISTEMA.');
-
-        return redirect()->route($this->redirect);
+        Cliente::create($request->all());
+        return redirect('admin/cliente')->with('mensaje', 'Cliente creado con exito');
     }
 
     /**
@@ -52,11 +45,11 @@ class ClienteController extends Controller
      */
     public function show($id)
     {
-        $data = $this->clientes->cliente($id);
+       /* $data = $this->clientes->cliente($id);
 
         return view('app::admin.cliente.show', [
             'clientes'    =>  $data
-        ]);
+        ]);*/
     }
 
     /**
@@ -67,12 +60,8 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        $data = $this->clientes->clientes($id);
-
-        return view('app::admin.cliente.edit', [
-            'cliente'  =>  $data,
-            'roles' =>  $this->clientes->roles()
-        ]);
+        $data = Cliente::findOrFail($id);
+        return view('admin.cliente.edit', compact('data'));
     }
 
     /**
@@ -84,9 +73,8 @@ class ClienteController extends Controller
      */
     public function update(\App\Http\Requests\Admin\ClienteUpdateRequest $request, $id)
     {
-        $this->clientes->update($request, $id);
-        $request->session()->flash('success', 'INFORMACION DE CLIENTE ACTUALIZADO EXITOSAMENTE');
-        return redirect()->route($this->redirect);
+        Cliente::findOrFail($id)->update($request->all());
+        return redirect('admin/cliente')->with('mensaje', 'Cliente actualizado con exito');
     }
 
     /**
@@ -95,18 +83,17 @@ class ClienteController extends Controller
      * @param  \Seguce92\Laravel\Hashid  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( Request $request,$id)
     {
-        if(request()->ajax() && $this->clientes->destroy($id))
-            return response()->json([
-                'status'    =>  'success',
-                'message'   =>  'CLIENTE ELIMINADO EXITOSAMENTE.'
-            ]);
-        else
-            return response()->json([
-                'status'    =>  'error',
-                'message'   =>  'NO SE PUEDE ELIMINAR EL CLIENTE SELECCIONADO.'
-            ]);
+        if ($request->ajax()) {
+            if (Rol::destroy($id)) {
+                return response()->json(['mensaje' => 'ok']);
+            } else {
+                return response()->json(['mensaje' => 'ng']);
+            }
+        } else {
+            abort(404);
+        }
     }
 
     protected function validator(array $data)
