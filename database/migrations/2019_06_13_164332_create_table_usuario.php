@@ -17,12 +17,13 @@ class CreateTableUsuario extends Migration
             $table->Increments('id');
             $table->string('nombre', 50);
             $table->string('ci',15)->unique();
-            $table->string('email',25);
+            $table->string('usuario',25);
+            $table->string('password',50);
             $table->boolean('estado')->default(true);
             $table->date('fechadenacimiento');
             $table->string('telefono');
-            $table->integer('idTipoUsuario')->unsigned();
-            $table->foreign('idTipoUsuario')->references('id')->on('tipo_usuarios');
+            $table->unsignedInteger('tipousuario_id');
+            $table->foreign('tipousuario_id', 'fk_usuariotipousuarios_tipousuarios')->references('id')->on('tipo__usuarios')->onDelete('restrict')->onUpdate('restrict');
             
             $table->timestamps();
             $table->charset = 'utf8mb4';
