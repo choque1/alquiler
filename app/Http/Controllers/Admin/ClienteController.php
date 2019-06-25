@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Illuminate\Admin\Cliente;
+use App\Models\Admin\Rol;
+use App\Http\Requests\ValidacionCliente;
 
 class ClienteController extends Controller
 {
     public function index()
     {
-
+        
+        $roles = Rol::all();
         $clientes = Cuarto::orderBy('id')->paginate(10);
-        return view('admin.cliente.index', compact('clientes'));
+        return view('admin.cliente.index', compact('clientes', 'roles'));
         
     }
 
@@ -21,8 +24,9 @@ class ClienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('admin:.cliente.create');
+    {   
+        $roles = Rol::all();
+        return view('admin:.cliente.create', compact('roles'));
     }
 
     /**
@@ -31,8 +35,9 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(\App\Http\Requests\Admin\ClienteStoreRequest $request)
+    public function store(ValidacionCliente $request)
     {
+
         Cliente::create($request->all());
         return redirect('admin/cliente')->with('mensaje', 'Cliente creado con exito');
     }
@@ -60,8 +65,9 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
+        $roles = Rol::all();
         $data = Cliente::findOrFail($id);
-        return view('admin.cliente.edit', compact('data'));
+        return view('admin.cliente.edit', compact('data','roles'));
     }
 
     /**
@@ -71,12 +77,11 @@ class ClienteController extends Controller
      * @param  \Seguce92\LaravelHashid\Hashid  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(\App\Http\Requests\Admin\ClienteUpdateRequest $request, $id)
+    public function update(ValidacionCliente $request, $id)
     {
         Cliente::findOrFail($id)->update($request->all());
         return redirect('admin/cliente')->with('mensaje', 'Cliente actualizado con exito');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -94,17 +99,5 @@ class ClienteController extends Controller
         } else {
             abort(404);
         }
-    }
-
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'nombre' => ['required', 'string','nombre', 'max:10'],
-            'apellido' => ['required', 'string', 'apellido', 'max:30'],
-            'ci' => ['required', 'string', 'ci', 'max:10'],
-            'telefono'=>['required', 'enum', 'telefono', 'min:9'],
-            'direccion' => ['required', 'string', 'direccion', 'max:10'],
-            'estado'=>['required', 'boolean', 'estado', ],
-        ]);
     }
 }

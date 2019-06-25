@@ -44,5 +44,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('cuarto/{id}/edit', 'CuartoController@edit')->name('cuarto_edit');
     Route::put('cuarto/{id}', 'CuartoController@update')->name('cuarto_update');
     Route::delete('cuarto/{id}', 'CuartoController@destroy')->name('cuarto_delete');
+    //cliente
+    Route::get('cliente', 'ClienteController@index')->name('cliente');
+    Route::get('cliente/create', 'ClienteController@create')->name('cliente_create');
+    Route::post('cliente', 'UsuarioController@store')->name('cliente_store');
+    Route::get('cuarto/{id}/edit', 'CuartoController@edit')->name('cuarto_edit');
+    Route::put('cuarto/{id}', 'CuartoController@update')->name('cuarto_update');
+    Route::delete('cuarto/{id}', 'CuartoController@destroy')->name('cuarto_delete');
 
 });

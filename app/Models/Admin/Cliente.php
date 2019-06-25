@@ -10,9 +10,9 @@ class Cliente extends Model
     use SoftDeletes;
 
     protected $table = 'clientes';
-    protected $fillable = ['nombre', 'apellido', 'ci', 'telefono', 'direccion', 'clientes'];
+    protected $fillable = ['nombre', 'apellido', 'ci', 'telefono', 'direccion', 'rol_id'];
 
     public function roles() {
-        return $this->belongsToMany(\jeremykenedy\LaravelRoles\Models\Role::class, 'role_cliente')->withPivot('id');
+        return $this->belongsToMany(Role::class, 'role_cliente')->withPivot('id');
     }
 }

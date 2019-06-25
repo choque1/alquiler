@@ -52,7 +52,7 @@
                             <td>{{$departamento->id}}</td>
                             <td>{{$departamento->direccion}}</td>
                             <td>{{$departamento->estado}}</td>
-                           @foreach ($tipos as $tipo)
+                             @foreach ($tipos as $tipo)
                               @if ($departamento->tipo_id==$tipo->id)
                                 <td >{{$tipo->nombre}}</td>  
                               @endif
