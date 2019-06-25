@@ -1,13 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Cliente extends Model
 {   
-    use SoftDeletes;
+    
 
     protected $table = 'clientes';
     protected $fillable = ['nombre', 'apellido', 'ci', 'telefono', 'direccion', 'rol_id'];

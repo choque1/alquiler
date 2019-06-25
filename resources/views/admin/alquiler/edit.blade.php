@@ -9,20 +9,20 @@
           @include('includes.mensaje')
           <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">Editar Cliente</h3>
+              <h3 class="box-title">Editar Alquiler</h3>
               <div class="box-tools pull-right">
-                    <a href="{{route('cliente')}}" class="btn btn-block btn-info btn-sm">
+                    <a href="{{route('alquiler')}}" class="btn btn-block btn-info btn-sm">
                         <i class="fa fa-fw fa-reply-all"></i> Volver al listado
                     </a>
                 </div>
             </div>
-          <form action="{{route('cliente_update', ['id' => $data->id])}}" id="form-general" 
+          <form action="{{route('alquiler_update', ['id' => $data->id])}}" id="form-general" 
           
           class="form-horizontal" method="POST" autocomplete="off" enctype="multipart/form-data" >
                 @method('PUT')
                 @csrf
                 <div class="box-body ">
-                    @include('admin.cliente.form-edit')
+                    @include('admin.usuario.form-edit')
                 </div>
                 <div class="box-footer">
                   <div class="col-lg-3"></div>
@@ -35,4 +35,3 @@
         </div>
     </div>
 @endsection
-    

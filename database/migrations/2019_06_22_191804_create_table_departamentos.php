@@ -15,6 +15,7 @@ class CreateTableDepartamentos extends Migration
     {
         Schema::create('departamentos', function (Blueprint $table) {
             $table->Increments('id');
+            $table->string('modelo');
             $table->string('preciopormes');
             $table->string('direccion', 50);
             $table->boolean('estado')->default(true);

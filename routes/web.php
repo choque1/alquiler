@@ -54,10 +54,18 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     //cliente
     Route::get('cliente', 'ClienteController@index')->name('cliente');
     Route::get('cliente/create', 'ClienteController@create')->name('cliente_create');
-    Route::post('cliente', 'UsuarioController@store')->name('cliente_store');
-    Route::get('cuarto/{id}/edit', 'CuartoController@edit')->name('cuarto_edit');
-    Route::put('cuarto/{id}', 'CuartoController@update')->name('cuarto_update');
-    Route::delete('cuarto/{id}', 'CuartoController@destroy')->name('cuarto_delete');
-
+    Route::post('cliente', 'ClienteController@store')->name('cliente_store');
+    Route::get('cliente/{id}/edit', 'ClienteController@edit')->name('cliente_edit');
+    Route::put('cliente/{id}', 'ClienteController@update')->name('cliente_update');
+    Route::delete('cliente/{id}', 'ClienteController@destroy')->name('cliente_delete');
+      //alquiler
+      Route::get('alquiler', 'AlquilerController@index')->name('alquiler');
+      Route::get('alquiler/create', 'AlquilerController@create')->name('alquiler_create');
+      Route::post('alquiler', 'AlquilerController@store')->name('alquiler_store');
+      Route::get('alquiler/{id}/edit', 'AlquilerController@edit')->name('alquiler_edit');
+      Route::put('alquiler/{id}', 'AlquilerController@update')->name('alquiler_update');
+      //reporte
+    
+     
 
 });

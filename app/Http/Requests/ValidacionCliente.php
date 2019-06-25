@@ -24,12 +24,11 @@ class ValidacionCliente extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => ['required', 'string','nombre', 'max:10'],
-            'apellido' => ['required', 'string', 'apellido', 'max:30'],
-            'ci' => ['required', 'string', 'ci', 'max:10'],
-            'telefono'=>['required', 'enum', 'telefono', 'min:9'],
-            'direccion' => ['required', 'string', 'direccion', 'max:10'],
-            'estado'=>['required', 'boolean', 'estado', ],
+            'nombre' => 'required|string|max:10',
+            'apellido' => 'required|string|max:30',
+            'ci' => 'required|string|max:10',
+            'telefono'=>'required|min:9',
+            'direccion' => 'required|string|max:50',
         ];
     }
 }

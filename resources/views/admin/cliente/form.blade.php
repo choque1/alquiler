@@ -13,7 +13,7 @@
 <div class="form-group">
   <label for="ci" class="col-lg-3 control-label requerido">Carnet de Indentidad</label>
     <div class="col-lg-8">
-    <input type="text" name="ci" class="form-control" id="ci" value = "{{old('ci', $data->ci ?? '' )}}" required  />
+    <input type="number" name="ci" class="form-control" id="ci" value = "{{old('ci', $data->ci ?? '' )}}" required  />
     </div>
 </div>
 <div class="form-group">
@@ -29,11 +29,11 @@
       </div>
 </div>
 <div class="form-group">
-  <label for="tipo_id" class="col-lg-3 control-label requerido" >Tipo</label>
+  <label for="rol_id" class="col-lg-3 control-label requerido" >Tipo</label>
     <div class="col-lg-8">
-      <select name="tipo_id" id="tipo_id" class="form-control">
+      <select name="rol_id" id="rol_id" class="form-control">
       @foreach ($roles as $rol)
-      <option value="{{$rol->id}}">{{$tipo->nombre}}</option>
+      <option value="{{$rol->id}}">{{$rol->nombre}}</option>
          
        @endforeach  
      </select>

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Illuminate\Admin\Cliente;
+use App\Models\Admin\Cliente;
 use App\Models\Admin\Rol;
 use App\Http\Requests\ValidacionCliente;
 
@@ -13,7 +13,7 @@ class ClienteController extends Controller
     {
         
         $roles = Rol::all();
-        $clientes = Cuarto::orderBy('id')->paginate(10);
+        $clientes = Cliente::orderBy('id')->paginate(1);
         return view('admin.cliente.index', compact('clientes', 'roles'));
         
     }
@@ -26,7 +26,7 @@ class ClienteController extends Controller
     public function create()
     {   
         $roles = Rol::all();
-        return view('admin:.cliente.create', compact('roles'));
+        return view('admin.cliente.create', compact('roles'));
     }
 
     /**
@@ -91,7 +91,7 @@ class ClienteController extends Controller
     public function destroy( Request $request,$id)
     {
         if ($request->ajax()) {
-            if (Rol::destroy($id)) {
+            if (Cliente::destroy($id)) {
                 return response()->json(['mensaje' => 'ok']);
             } else {
                 return response()->json(['mensaje' => 'ng']);

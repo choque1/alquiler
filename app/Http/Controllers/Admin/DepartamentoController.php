@@ -60,6 +60,7 @@ class DepartamentoController extends Controller
             $departamento->foto= $name;
     		
         }
+        $departamento->modelo=$request->input('modelo');
         $departamento->preciopormes=$request->input('preciopormes');
     	$departamento->direccion=$request->input('direccion');
     	$departamento->tipo_id=$request->input('tipo_id');
@@ -67,7 +68,7 @@ class DepartamentoController extends Controller
     	$departamento->descripcion=$request->input('descripcion');
     	
     	$departamento->save();
-    	return redirect('admin/departamento')->with('mensaje', 'Departamento creado con exito');;
+    	return redirect('admin/departamento')->with('mensaje', 'Departamento creado con exito');
       
     }
 

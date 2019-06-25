@@ -1,14 +1,19 @@
-
+<div class="form-group">
+  <label for="modelo" class="col-lg-3 control-label requerido" > Modelo</label>
+    <div class="col-lg-8">
+    <input type="text" name="modelo" class="form-control" id="modelo" value = "{{old('modelo')}}" required  />
+    </div>
+</div>
 <div class="form-group">
         <label for="preciopormes" class="col-lg-3 control-label requerido" > Precio por mes</label>
           <div class="col-lg-8">
-          <input type="text" name="preciopormes" class="form-control" id="preciopormes" value = "{{old('preciopormes', $data->preciopormes ?? '')}}" required  />
+          <input type="text" name="preciopormes" class="form-control" id="preciopormes" value = "{{old('preciopormes')}}" required  />
           </div>
       </div>
       <div class="form-group">
           <label for="direccion" class="col-lg-3 control-label requerido" >Direccion</label>
             <div class="col-lg-8">
-            <input type="text" name="direccion" class="form-control" id="direccion" value = "{{old('direccion', $data->direccion ?? '')}}" required  />
+            <input type="text" name="direccion" class="form-control" id="direccion" value = "{{old('direccion')}}" required  />
             </div>
       </div>
       <div class="form-group">

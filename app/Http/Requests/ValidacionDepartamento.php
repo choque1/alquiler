@@ -24,6 +24,7 @@ class ValidacionDepartamento extends FormRequest
     public function rules()
     {
         return [
+            'modelo' => 'required',
             'preciopormes' => 'required|numeric',
             'direccion' => 'required|max:50',
             'tipo_id' => 'required',
