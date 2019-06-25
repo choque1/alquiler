@@ -78,7 +78,8 @@ class UsuarioController extends Controller
     {
         $tipos = Tipo_Usuario::all();
         $usuarios = Usuario::find( $id);
-        return view('admin.Usuario.edit', compact('usuarios','tipos'));
+        //dd($usuarios);
+        return view('admin.usuario.edit', compact('usuarios','tipos'));
     }
 
     /**
@@ -91,6 +92,7 @@ class UsuarioController extends Controller
     public function update(ValidacionUsuario $request, $id)
 
     {
+        dd($usuarios);
         $usuarios = Usuario::find($id);
         $usuarios->nombre=$request->nombre;
     	$usuarios->ci=$request->ci;

@@ -35,7 +35,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::get('usuario', 'UsuarioController@index')->name('usuario');
     Route::get('usuario/create', 'UsuarioController@create')->name('usuario_create');
     Route::post('usuario', 'UsuarioController@store')->name('usuario_store');
-    Route::get('usuario/{id}', 'UsuarioController@destroy')->name('usuario_delete');
+    Route::delete('usuario/{id}', 'UsuarioController@destroy')->name('usuario_delete');
+    Route::get('usuario/{id}/edit', 'UsuarioController@edit')->name('usuario_edit');
+    Route::put('usuario/{id}', 'UsuarioController@update')->name('usuario_update');
     //departamento
     Route::get('departamento', 'DepartamentoController@index')->name('departamento');
     Route::get('departamento/create', 'DepartamentoController@create')->name('departamento_create');
