@@ -5,6 +5,12 @@
       </div>
 </div>
 <div class="form-group">
+    <label for="email" class="col-lg-3 control-label requerido" >email</label>
+      <div class="col-lg-8">
+      <input type="email" name="email" class="form-control" id="email" value = "{{old('email')}}" required  />
+      </div>
+</div>
+<div class="form-group">
     <label for="ci" class="col-lg-3 control-label requerido" >CI</label>
       <div class="col-lg-8">
       <input type="text" name="ci" class="form-control" id="ci" value = "{{old('ci')}}" required  />
@@ -38,12 +44,4 @@
       </div>
 </div>
 <div class="form-group">
-    <label for="tipousuario_id" class="col-lg-3 control-label requerido" >Condicion</label>
-      <div class="col-lg-8">
-        <select name="tipousuario_id" id="tipousuario_id" class="form-control">
-        @foreach ($tipos as $tipo)
-       <option value="{{$tipo->id}}">{{$tipo->nombre}}</option>
-           
-         @endforeach  
-       </select>
-     </div>
+

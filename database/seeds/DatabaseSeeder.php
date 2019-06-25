@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
         ]);
         // $this->call(UsersTableSeeder::class);
         $this->call(RolTableSeeder::class);
+        $this->call(tipoSeeder::class);
         $this->call(UsuarioAdministradorSeeder::class);
+
     }
     protected function truncateTablas(array $tablas)
     {

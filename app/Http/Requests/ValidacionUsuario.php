@@ -30,7 +30,7 @@ class ValidacionUsuario extends FormRequest
             'password' => 'required|min:8|max:30',
             'fechadenacimiento' => 'required|max:20',
             'telefono'=>'min:8|max:15|required',
-            'tipousuario_id'=>'required'
+            'email'=>'required|min:8|max:30'
                     
         ];
     }

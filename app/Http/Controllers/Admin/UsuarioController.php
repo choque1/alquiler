@@ -15,15 +15,15 @@ class UsuarioController extends Controller
     public function index(Request $request)
     {
        
-        $usuarios = Usuario::orderBy('id')->paginate(2);
-        $tipos = Tipo_Usuario::all();
-        return view('admin.usuario.index', compact('usuarios','tipos'));
+        //$usuarios = Usuario::orderBy('id')->paginate(2);
+        $usuarios=Usuario::all();
+        return view('admin.usuario.index', compact('usuarios'));
     }
 
     public function create()
     {
-        $tipos = Tipo_Usuario::all();
-        return view('admin.usuario.create', compact('tipos'));
+       
+        return view('admin.usuario.create');
     }
 
     /**
@@ -41,11 +41,12 @@ class UsuarioController extends Controller
     	$usuarios->ci=$request->input('ci');
         $usuarios->usuario=$request->input('usuario');
         $usuarios->password=$request->input('password');
-     //   $usuarios->estado=$request->input('estado');
         $usuarios->fechadenacimiento=$request->input('fechadenacimiento');
         $usuarios->telefono=$request->input('telefono');
-        $usuarios->tipousuario_id=$request->input('tipousuario_id');
+        $usuarios->email=$request->input('email');
+               // dd($usuarios);
         $usuarios->save();
+
     	return redirect('admin/usuario')->with('mensaje', 'usuario creado con exito');;
         
       /*  if(Input::hasFile('foto')){
@@ -97,7 +98,7 @@ class UsuarioController extends Controller
         $usuarios->password=$request->password;
         $usuarios->fechadenacimiento=$request->fechadenacimiento;
         $usuarios->telefono=$request->telefono;
-        $usuarios->idTipoUsuario=$request->idTipoUsuario;      
+        $usuarios->email=$request->input('email');    
         $usuarios->save();  
 
         return redirect('admin/usuario')->with('mensaje', 'actualizado con exito');

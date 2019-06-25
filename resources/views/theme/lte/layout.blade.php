@@ -18,11 +18,20 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{asset("assets/$theme/dist/css/skins/_all-skins.min.css")}}">
+    <link rel="stylesheet" href="{{asset("assets/$theme/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")}}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
   @yield('styles')
   <link rel="stylesheet" href="{{asset("assets/css/custom.css")}}">
   
   @yield('styles')
+
+
+
+  <script src="{{asset("assets/$theme/ckeditor/ckeditor.js")}}"></script>
+  <script src="{{asset("assets/$theme/ckeditor/samples/js/sample.js")}}"></script>
+  <link rel="stylesheet" href="{{asset("assets/$theme/ckeditor/samples/css/samples.css")}}">
+  <link rel="stylesheet" href="{{asset("assets/$theme/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css")}}">
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -53,6 +62,8 @@
         </div>
         <!-- jQuery 3 -->
 <script src="{{asset("assets/$theme/bower_components/jquery/dist/jquery.min.js")}}"></script>
+<script src="{{asset("assets/$theme/bower_components/ckeditor/ckeditor.js")}}"></script>
+<script src="{{asset("assets/$theme/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")}}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{asset("assets/$theme/bower_components/bootstrap/dist/js/bootstrap.min.js")}}"></script>
 <script src="{{asset("assets/$theme/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js")}}"></script>
@@ -60,14 +71,35 @@
 <script src="{{asset("assets/$theme/bower_components/jquery-slimscroll/jquery.slimscroll.min.js")}}"></script>
 <!-- FastClick -->
 <script src="{{asset("assets/$theme/bower_components/fastclick/lib/fastclick.js")}}"></script>
+<script src="{{asset("assets/$theme/bower_components/ckeditor/ckeditor.js")}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset("assets/$theme/dist/js/adminlte.min.js")}}"></script>
+<script src="{{asset("assets/$theme/dist/js/adminlte.min.js")}}"></script>
+<script src="{{asset("assets/$theme/dist/js/demo.js")}}"></script>
 <script src="{{asset("assets/js/jquery-validation/jquery.validate.min.js")}}"></script>
+
 <script src="{{asset("assets/js/jquery-validation/localization/messages_es.min.js")}}"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="{{asset("assets/js/funciones.js")}}"></script>
+
 <script src="{{asset("assets/js/scripts.js")}}"></script>
+
+
+<script src="{{asset("assets/$theme/ckeditor/samples/toolbarconfigurator/lib/codemirror/codemirror.js")}}"></script>
+<script src="{{asset("assets/$theme/ckeditor/samples/toolbarconfigurator/lib/codemirror/javascript.js")}}"></script>
+
+<script src="{{asset("assets/$theme/ckeditor/samples/toolbarconfigurator/lib/codemirror/show-hint.js")}}"></script>
+<script src="{{asset("assets/$theme/ckeditor/samples/toolbarconfigurator/js/fulltoolbareditor.js")}}"></script>
+<script src="{{asset("assets/$theme/ckeditor/samples/toolbarconfigurator/js/abstracttoolbarmodifier.js")}}"></script>
+<script src="{{asset("assets/$theme/ckeditor/samples/toolbarconfigurator/js/toolbarmodifier.js")}}"></script>
+<script src="{{asset("assets/$theme/ckeditor/samples/toolbarconfigurator/js/toolbartextmodifier.js")}}"></script>
+<script src="{{asset("assets/$theme/ckeditor/samples/js/sf.js")}}"></script>
+
+
+
+
+
 
 
 @yield('scripts')

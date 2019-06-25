@@ -14,7 +14,6 @@
                             <th>NOMBRE</th>
                             <th>CI</th>
                             <th>EMAIL</th>
-                            <th>ESTADO</th>
                             <th>FECHADENACIMIENTO</th>
                             <th>TELEFONO</th>
                             <th></th>
@@ -27,7 +26,6 @@
                             <td>{{$usuario->nombre}}</td>
                             <td>{{$usuario->ci}}</td>
                             <td>{{$usuario->email}}</td>
-                            <td>{{$usuario->estado}}</td>
                             <td>{{$usuario->fechadenacimiento}}</td>
                             <td>{{$usuario->telefono}}</td>
                             <td><a href="" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>
