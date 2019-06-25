@@ -19,6 +19,11 @@ Route::get('seguridad/logout', 'Seguridad\LoginController@logout')->name('logout
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'superadmin']], function () {
     Route::get('','AdminController@index');
     Route::resource('con','ContratoController');
+    Route::get('contrato', 'ContratoController@index')->name('contrato');
+    Route::get('contrato/create', 'ContratoController@create')->name('contrato_create');
+    Route::post('contrato', 'ContratoController@store')->name('contrato_store');
+    
+    
     Route::get('permiso', 'PermisoController@index')->name('permiso');
     Route::get('permiso/create', 'PermisoController@create')->name('permiso_create');
     //menu

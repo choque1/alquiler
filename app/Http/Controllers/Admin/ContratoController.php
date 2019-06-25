@@ -20,7 +20,7 @@ class ContratoController extends Controller
     {
         $contrato = Ccontrato::all();
         //dd($contrato);
-        return view('admin.contratos.index', compact('contrato'));
+        return view('admin.contrato.index', compact('contrato'));
 
     }
 
@@ -31,7 +31,7 @@ class ContratoController extends Controller
      */
     public function create()
     {
-        return view('admin.contratos.create');
+        return view('admin.contrato.create');
     }
 
     /**
@@ -47,7 +47,7 @@ class ContratoController extends Controller
         $new=new Ccontrato($request->all());
         $new->save();
 
-        return redirect()->route('con.index');
+        return redirect('admin/contrato');
     }
 
     /**

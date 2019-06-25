@@ -4,5 +4,5 @@
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 @endsection
 @section('contenido')
-@include('admin.contratos.form')
+@include('admin.contrato.form')
 @endsection

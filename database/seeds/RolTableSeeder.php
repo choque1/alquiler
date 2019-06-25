@@ -14,8 +14,8 @@ class RolTableSeeder extends Seeder
     {
         $rols = [
             'administrador',
-            'editor',
-            'supervisor'
+            'cliente',
+            'empleado'
         ];
         foreach($rols as $key => $value){
             DB::table('rol')->insert([
