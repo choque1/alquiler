@@ -2,7 +2,7 @@
 <div class="form-group">
   <label for="modelo" class="col-lg-3 control-label requerido" > Modelo</label>
     <div class="col-lg-8">
-    <input type="text" name="modelo" class="form-control" id="modelo" value = "{{old('modelo', $data->preciopormes ?? '')}}" required  />
+    <input type="text" name="modelo" class="form-control" id="modelo" value = "{{old('modelo', $data->modelo ?? '')}}" required  />
     </div>
 </div>
 <div class="form-group">
@@ -21,23 +21,12 @@
     <label for="tipo_id" class="col-lg-3 control-label requerido" >Tipo</label>
       <div class="col-lg-8">
         <select name="tipo_id" id="tipo_id" class="form-control">
-        @foreach ($tipos as $tipo)
-        <option value="{{$tipo->id}}" {{$data->tipo_id==$tipo->id ? 'selected': null}}>{{$tipo->nombre}}</option>
+       
+        <option {{$data->tipo ? 'selected': null}}>{{$data->tipo}}</option>
            
-         @endforeach  
+    
        </select>
-     </div>
-</div>
-<div class="form-group">
-    <label for="tipo_id" class="col-lg-3 control-label requerido" >Condicion</label>
-      <div class="col-lg-8">
-        <select name="condicion_id" id="condicion_id" class="form-control">
-        @foreach ($condicion as $cond)
-       <option value="{{$cond->id}}" {{$data->condicion_id==$cond->id ? 'selected': null}}>{{$cond->nombre}}</option>
-           
-         @endforeach  
-       </select>
-     </div>
+     </div> 
 </div>
 <div class="form-group">
   <label for="descripcion" class="col-lg-3 control-label requerido">Descripcion</label>

@@ -7,6 +7,7 @@
                     <th>FECHA DE ENTREGA</th>
                     <th>PAGO</th>
                     <th>MODELO</th>
+                    <th>TIPO</th>
                     <th>ESTADO</th>
                     <th>CLIENTE</th>
                     <th>ACCION</th>
@@ -22,6 +23,7 @@
                     @foreach ($departamentos as $departamento)
                         @if ($alquiler->departamento_id==$departamento->id)
                           <td >{{$departamento->modelo}}</td>  
+                          <td >{{$departamento->tipo}}</td> 
                         @endif
                     @endforeach 
                     @foreach ($estados as $estado)
@@ -35,9 +37,11 @@
                     @endif
                     @endforeach 
                     <td>
-                            <a href="{{route('alquiler_edit', $departamento->id)}}" class="btn btn-warning">
+                            <a href="{{route('alquiler_edit', $alquiler->id)}}" class="btn btn-warning">
                                     
-                                <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>
+                            <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>
+                                
+                                    
                     </td>
                 </tr>                            
                 @endforeach

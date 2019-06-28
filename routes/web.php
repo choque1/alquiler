@@ -67,7 +67,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
       Route::get('alquiler/{id}/edit', 'AlquilerController@edit')->name('alquiler_edit');
       Route::put('alquiler/{id}', 'AlquilerController@update')->name('alquiler_update');
       //reporte
-      Route::get('crearPDF/{tipo}', 'PdfController@crearPDF');
+      Route::get('reporte', 'PdfController@index')->name('reporte');
+      Route::get('crear_reporte/{tipo}', 'PdfController@crear_reporte');
     
      
 

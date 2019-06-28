@@ -20,7 +20,7 @@ class CreateTableAlquileres extends Migration
             $table->string('pago');
             $table->unsignedInteger('departamento_id');
             $table->foreign('departamento_id', 'fk_alquileresdepartamentos_departamentos')
-            ->references('id')->on('departamentos')->onDelete('restrict')->onUpdate('restrict');   
+            ->references('id')->on('departamentos')->onDelete('restrict')->onUpdate('restrict'); 
             $table->unsignedInteger('estado_id');
             $table->foreign('estado_id', 'fk_alquileresestadoalquiler_estadoalquiler')
             ->references('id')->on('estado_alquiler')->onDelete('restrict')->onUpdate('restrict'); 

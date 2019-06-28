@@ -29,11 +29,11 @@
       <select name="departamento_id" id="departamento_id" class="form-control">
       @foreach ($departamentos as $departamento)
      <option value="{{$departamento->id}}">{{$departamento->modelo}}</option>
-         
-       @endforeach  
+      @endforeach  
      </select>
    </div>
 </div>
+  
 <div class="form-group">
   <label for="estado_id" class="col-lg-3 control-label requerido" >Estado</label>
     <div class="col-lg-8">

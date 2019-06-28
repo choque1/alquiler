@@ -11,8 +11,7 @@
             <div class="box-header with-border">
               <h3 class="box-title">Departamentos</h3>
               
-            </div>         
-                        
+            </div>              
                    
             <div class="box-body table-responsive no-padding">
                     <div class="box-body table-responsive no-padding">
@@ -24,7 +23,7 @@
                         <form action="{{route('departamento')}}" method="GET" >
                                 <div class="box-tools">
                                         <div class="input-group input-group-sm" style="width: 300px;">
-                                          <input type="text" name="estado" class="form-control " placeholder="Search" aria-describedby="search"
+                                          <input type="text" name="tipo" class="form-control " placeholder="Search" aria-describedby="search"
                                         >
                         
                                           <div class="input-group-btn">
@@ -37,10 +36,9 @@
                     <thead>
                         <tr>
                             <th>ID</th>
+                            <th>MODELO</th>
                             <th>DIRECCION</th>
-                            <th>ESTADO</th>
-                            <th>TIPO</th>
-                            <th>CONDICION</th>
+                            <th>TIPO</th>          
                             <th>DESCRIPCION</th>
                             <th>FOTO</th>
                             <th>ACCION</th>
@@ -50,20 +48,9 @@
                         @foreach ($departamentos as $departamento)
                         <tr>
                             <td>{{$departamento->id}}</td>
+                            <td>{{$departamento->modelo}}</td>
                             <td>{{$departamento->direccion}}</td>
-                            <td>{{$departamento->estado}}</td>
-                             @foreach ($tipos as $tipo)
-                              @if ($departamento->tipo_id==$tipo->id)
-                                <td >{{$tipo->nombre}}</td>  
-                              @endif
-                           
-                           @endforeach
-                           @foreach ($condicion as $cond)
-                              @if ($departamento->condicion_id==$cond->id)
-                                <td >{{$cond->nombre}}</td>  
-                              @endif
-                           
-                           @endforeach                    
+                            <td >{{$departamento->tipo}}</td>  
                             <td>{{$departamento->descripcion}}</td>
                             <td><img src="{{asset('imagenes/departamentos/'.$departamento->foto)}}" alt="" height="100px" width="100px" class="img-thumbnail"></td> 
                             <td>

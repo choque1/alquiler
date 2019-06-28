@@ -27,8 +27,7 @@ class ValidacionDepartamento extends FormRequest
             'modelo' => 'required',
             'preciopormes' => 'required|numeric',
             'direccion' => 'required|max:50',
-            'tipo_id' => 'required',
-            'condicion_id' => 'required',
+            'tipo' => 'required',
             'descripcion' => 'required|max:300',
             'foto'=> 'max:200' ,             
         ];

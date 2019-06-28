@@ -9,6 +9,7 @@ use App\Models\Admin\Departamento;
 use App\Models\Admin\EstadoAlquiler;
 use App\Models\Admin\Cliente;
 
+
 class AlquilerController extends Controller
 {
     /**
@@ -32,11 +33,11 @@ class AlquilerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {   
         $departamentos = Departamento::all();
         $estados = EstadoAlquiler::all();
         $clientes = Cliente::all();
-        return view('admin.alquiler.create',compact('departamentos','estados','clientes'));
+        return view('admin.alquiler.create',compact('departamentos','estados','clientes','condicion'));
     }
 
     /**
@@ -57,24 +58,25 @@ class AlquilerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
+    
     {
-        //
+       
+              
+
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
+    
     public function edit($id)
     {
+       
         $departamentos = Departamento::all();
         $estados = EstadoAlquiler::all();
         $clientes = Cliente::all();
         $data = Alquiler::findOrFail($id);
-        return view('admin.alquiler.create',compact('data','departamentos','estados','clientes'));
+        return view('admin.alquiler.create',compact('data','departamentos','estados','clientes','condicion'));
     }
 
     /**
@@ -87,7 +89,6 @@ class AlquilerController extends Controller
     public function update(Request $request, $id)
     {
         Alquiler::findOrFail($id)->update($request->all());
-        dd($request);
         return redirect('admin/alquiler')->with('mensaje', 'Alquiler actualizado con exito');
         
        /* $alquileres = Alquiler::ofType($id)->get();

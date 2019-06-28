@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Departamento extends Model
 {
     protected $table = "departamentos";
-    protected $fillable = ['preciopormes','direccion','tipo_id','condicion_id','descripcion','foto'];
+    protected $fillable = ['modelo','preciopormes','direccion','tipo','descripcion','foto'];
 
-    public function scopeEstado($query,$estado){
-        if($estado)
-           return $query->where('estado','LIKE', '%'.$estado.'%');
+    public function scopeTipo($query,$tipo){
+        if($tipo)
+           return $query->where('tipo','LIKE', '%'.$tipo.'%');
         
     }
     

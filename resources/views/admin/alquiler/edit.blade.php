@@ -22,7 +22,7 @@
                 @method('PUT')
                 @csrf
                 <div class="box-body ">
-                    @include('admin.usuario.form-edit')
+                    @include('admin.alquiler.form-edit')
                 </div>
                 <div class="box-footer">
                   <div class="col-lg-3"></div>

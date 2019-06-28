@@ -19,10 +19,8 @@ class CreateTableDepartamentos extends Migration
             $table->string('preciopormes');
             $table->string('direccion', 50);
             $table->boolean('estado')->default(true);
-            $table->unsignedInteger('tipo_id');
-            $table->foreign('tipo_id', 'fk_departamentostipo_tipo')->references('id')->on('tipo')->onDelete('restrict')->onUpdate('restrict');
-            $table->unsignedInteger('condicion_id');
-            $table->foreign('condicion_id', 'fk_departamentoscondicion_condicion')->references('id')->on('condicion')->onDelete('restrict')->onUpdate('restrict');
+            $table->string('tipo');
+            
             $table->string('descripcion',300);
             $table->String('foto', 200);
             $table->timestamps();

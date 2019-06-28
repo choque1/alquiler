@@ -5,9 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ValidacionDepartamento;
 use App\Models\Admin\Departamento;
-use App\Models\Admin\Tipo;
-use App\Models\Admin\Condicion;
-use Illuminate\Support\Facades\DB;
+
 
 class DepartamentoController extends Controller
 {
@@ -19,11 +17,9 @@ class DepartamentoController extends Controller
     public function index(Request $request)
     {
         
-        
-        $tipos = Tipo::all();
-        $condicion = Condicion::all();
-        $departamentos = Departamento::estado($request->estado)->orderBy('id')->paginate(2);
-        return view('admin.departamento.index', compact('departamentos','tipos', 'condicion'));
+    
+        $departamentos = Departamento::tipo($request->tipo)->orderBy('id')->paginate(2);
+        return view('admin.departamento.index', compact('departamentos'));
     }
 
     /**
@@ -34,12 +30,9 @@ class DepartamentoController extends Controller
     public function create()
     {
 
-            $condicion= Condicion::all();
-            
-            $tipos = Tipo::all();
-           
+                    
        
-        return view('admin.departamento.create',compact('tipos','condicion'));
+        return view('admin.departamento.create');
     }
 
     /**
@@ -63,8 +56,8 @@ class DepartamentoController extends Controller
         $departamento->modelo=$request->input('modelo');
         $departamento->preciopormes=$request->input('preciopormes');
     	$departamento->direccion=$request->input('direccion');
-    	$departamento->tipo_id=$request->input('tipo_id');
-    	$departamento->condicion_id=$request->input('condicion_id');
+    	$departamento->tipo=$request->input('tipo');
+
     	$departamento->descripcion=$request->input('descripcion');
     	
     	$departamento->save();
@@ -91,12 +84,10 @@ class DepartamentoController extends Controller
      */
     public function edit($id)
     {
-        $condicion= Condicion::all();
             
-         $tipos = Tipo::all();
-           
+       
         $data = Departamento::findOrFail($id);
-        return view('admin.departamento.edit', compact('data','condicion','tipos'));
+        return view('admin.departamento.edit', compact('data'));
     }
 
     /**

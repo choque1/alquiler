@@ -17,27 +17,16 @@
             </div>
       </div>
       <div class="form-group">
-          <label for="tipo_id" class="col-lg-3 control-label requerido" >Tipo</label>
+          <label for="tipo" class="col-lg-3 control-label requerido" >Tipo</label>
             <div class="col-lg-8">
-              <select name="tipo_id" id="tipo_id" class="form-control">
-              @foreach ($tipos as $tipo)
-              <option value="{{$tipo->id}}">{{$tipo->nombre}}</option>
-                 
-               @endforeach  
+              <select name="tipo" id="tipo" class="form-control">
+              <option value="Alquiler" >Alquiler</option>
+              <option value="Anticretico">Anticretico</option>   
+               
              </select>
-           </div>
+           </div> 
       </div>
-      <div class="form-group">
-          <label for="tipo_id" class="col-lg-3 control-label requerido" >Condicion</label>
-            <div class="col-lg-8">
-              <select name="condicion_id" id="condicion_id" class="form-control">
-              @foreach ($condicion as $cond)
-             <option value="{{$cond->id}}">{{$cond->nombre}}</option>
-                 
-               @endforeach  
-             </select>
-           </div>
-      </div>
+     
       <div class="form-group">
         <label for="descripcion" class="col-lg-3 control-label requerido">Descripcion</label>
           <div class="col-lg-8">
