@@ -28,9 +28,14 @@
                             <td>{{$usuario->email}}</td>
                             <td>{{$usuario->fechadenacimiento}}</td>
                             <td>{{$usuario->telefono}}</td>
-                            <td><a href="" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>
-                                <a href="{{route('usuario_delete', $usuario->id)}}" class="btn btn-danger" onclick="return confirm ('seguro que deseas eliminarlo')"><span class="glyphicon 
-                                    glyphicon-remove-circle" aria-hidden="true"></span></a>
+                            <td><a href="{{route('usuario_edit', $usuario->id)}}" class="btn btn-warning"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>
+                                
+            <form action="{{route('usuario_delete', ['id' => $usuario->id])}}" class="d-inline form-eliminar" method="POST">
+             @csrf @method("DELETE")
+             <button type="submit" class="btn btn-danger btn-accion-tabla eliminar tooltipsC" title="Eliminar este registro" >
+             <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+             </button>
+                                    </form>
                             </td>
                         </tr>                            
                         @endforeach

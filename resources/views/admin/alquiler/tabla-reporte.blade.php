@@ -35,9 +35,9 @@
                     @endif
                     @endforeach 
                     <td>
-                        <a href="{{route('alquiler_edit', $departamento->id)}}" class="btn btn-warning">
-                                
-                            <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>
+                            <a href="{{route('alquiler_edit', $departamento->id)}}" class="btn btn-warning">
+                                    
+                                <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>
                     </td>
                 </tr>                            
                 @endforeach
